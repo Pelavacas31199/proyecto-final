@@ -6,30 +6,33 @@ import mongoose from 'mongoose'
 
 const app = express()
 
-/*const url = 'mongodb://localhost:27017/myApp'
+const uri = `mongodb+srv://PFcomputo:PFcomputo@cluster0.bv3a5wm.mongodb.net/PFcomputo?retryWrites=true&w=majority`
 const options ={ 
     useNewUrlParser:true,
     useUnifiedTopology: true
 }
 
 
-mongoose.connect(url,options).then(
+mongoose.connect(uri,options).then(
     ()=>{
-        console.log('Conectado a DB')
+        console.log('Conexión satisfactoria')
     },
     err=>{console.log(err)}
-)*/
+)
 
 app.use(morgan('tiny'))
 app.use(corse())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-//app.use('/api',require('./routes/nota'))
+app.use('/api',require('./routes/auth'))
 //app.use('/users',require('./routes/users'))
 
 //Rutas del back
 app.get('/',(req,res)=>{
-    res.send('Hola mundo')
+    res.json({
+        estado: true,
+        mensaje: 'Funciona'
+    })
 })
 
 //Middleware para Vue router mode history
@@ -40,5 +43,5 @@ app.use(express.static(path.join(__dirname,'public')))
 app.set('puerto',process.env.PORT || 3000)
 
 app.listen(app.get('puerto'), ()=>{
-    console.log('Ejemplo del servidor puerto '+app.get('puerto'))
+    console.log('Servidor trabajando en el puerto '+app.get('puerto'))
 })
