@@ -18,33 +18,32 @@ router.post('/nueva-receta',async(req,res)=>{
     }
 })
 
-/*router.get('/nota/:id',async(req,res)=>{
+router.get('/recetas',async(req,res)=>{
+    try{
+        const notaDB= await Receta.find()
+        res.json(notaDB)
+    }
+    catch(error){
+        return res.status(400).json({
+            mensaje: "No se encuentra recetas",
+            error
+        })
+    }
+})
+
+router.get('/receta/:id',async(req,res)=>{
     const _id =req.params.id
     try{
-        const notaDB= await Nota.findOne({_id})
+        const notaDB= await Receta.findOne({_id})
         res.json(notaDB)
     }
     catch(error){
         return res.status(400).json({
-            mensaje: "No se encuentra nota con ese ID",
-            error
-        })
-    }
-})
-
-router.get('/nota',async(req,res)=>{
-    try{
-        const notaDB= await Nota.find()
-        res.json(notaDB)
-    }
-    catch(error){
-        return res.status(400).json({
-            mensaje: "No se encuentra nota con ese ID",
+            mensaje: "No se encuentra receta con ese ID",
             error
         })
     }
 })
 
 
-*/
 module.exports=router

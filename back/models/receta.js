@@ -12,4 +12,6 @@ const recetaSchema = new Schema({
     imagen: String
 })
 
+
+
 module.exports = mongoose.model('Receta',recetaSchema)
