@@ -1,8 +1,8 @@
-import express from 'express'
-import morgan from 'morgan'
-import corse from 'cors'
-import path from 'path'
-import mongoose from 'mongoose'
+const express = require('express')
+const mongoose = require('mongoose')
+const corse= require('cors')
+const path = require('path')
+const morgan= require('morgan')
 
 const app = express()
 
@@ -12,6 +12,10 @@ const options ={
     useUnifiedTopology: true
 }
 
+const corsOptions={
+    origin:"*",
+    optionsSuccessStatus:200
+}
 
 mongoose.connect(uri,options).then(
     ()=>{
@@ -21,7 +25,7 @@ mongoose.connect(uri,options).then(
 )
 
 app.use(morgan('tiny'))
-app.use(corse())
+app.use(corse(corsOptions))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use('/api',require('./routes/auth'))
@@ -40,8 +44,8 @@ const history=require('connect-history-api-fallback')
 app.use(history())
 app.use(express.static(path.join(__dirname,'public')))
 
-app.set('puerto',process.env.PORT || 3000)
+const PORT = process.env.PORT||3000
 
-app.listen(app.get('puerto'), ()=>{
-    console.log('Servidor trabajando en el puerto '+app.get('puerto'))
+app.listen(PORT,()=>{
+    console.log(`Servidor trabajando en el puerto: ${PORT}`)
 })

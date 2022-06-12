@@ -1,8 +1,8 @@
-import express from "express";
+const express = require('express')
 const router = express.Router()
 
 //Importamos el modelo de las notas que creamos
-import Receta from "../models/receta";
+const Receta = require('../models/receta')
 
 //Agregamos una nueva NOTA usando POST
 router.post('/nueva-receta',async(req,res)=>{

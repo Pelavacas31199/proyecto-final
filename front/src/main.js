@@ -9,7 +9,7 @@ import VueAxios from 'vue-axios'
 Vue.config.productionTip = false
 Vue.use(BootstrapVue, VueAxios,axios)
 
-axios.defaults.baseURL='http://localhost:3000/api'
+axios.defaults.baseURL='https://pfcomputo-back.herokuapp.com/api'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'

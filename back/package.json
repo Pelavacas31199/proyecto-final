@@ -8,7 +8,7 @@
     "dev": "nodemon index.js",
     "devbabel": "nodemon --exec npm run babel-node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "babel-node app.js --exec"
+    "start": "node index "
   },
   "keywords": [],
   "author": "",
