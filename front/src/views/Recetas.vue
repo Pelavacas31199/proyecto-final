@@ -3,32 +3,26 @@
         <h1>Recetas</h1>
         <br>
         <router-link to="/crear" class="btn btn-success"
-        style="width:100%; margin: 5px;">Agregar nota nueva</router-link>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Título</th>
-                    <th scope="col">Ingredientes</th>
-                    <th scope="col">Intrucciones</th>
-                    <th scope="col">Imagen</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(receta, index) in notas" :key="index">
-                    <th scope="row">{{receta._id}}</th>
-                    <td>{{receta.titulo}}</td>
-                    <td>{{receta.ingredientes}}</td>
-                    <td>{{receta.instrucciones}}</td>
-                    <td>{{receta.imagen}}</td>
-                    <td>
-                        <b-button class="btn-warning btn-sm mx-2"  
-                        @click="verReceta(receta._id)">Ver</b-button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        style="width:100%; margin: 5px;">Agregar Receta Nueva</router-link>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col" v-for="(receta, index) in notas" :key="index">
+                <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                    <img v-if="receta.imagen" class="mr-3" :src="receta.imagen" :alt="receta.imagen" width="120">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{receta.titulo}}</h5>
+                            <p class="card-text">{{receta.ingredientes}}</p>
+                            <p class="card-text"><small class="text-muted">{{receta.instrucciones}}</small></p>
+                            <b-button class="btn-success btn-sm mx-2"  @click="verReceta(receta._id)">Ver receta</b-button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -66,3 +60,15 @@ export default {
     },
 }
 </script>
+<style>
+    h5{
+        color: black;
+        text-align: left;
+    }
+    h3{
+        color: black;
+    }
+    hr{
+        color: black;
+    }
+</style>

@@ -1,23 +1,22 @@
 <template>
+    
     <div class="container">
+        <h1>Receta</h1>
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Id</th>
                     <th scope="col">Título</th>
                     <th scope="col">Ingredientes</th>
-                    <th scope="col">Intrucciones</th>
+                    <th scope="col">Instrucciones</th>
                     <th scope="col">Imagen</th>
-                    <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr >
-                    <th scope="row">{{verReceta._id}}</th>
+                <tr>
                     <td>{{verReceta.titulo}}</td>
                     <td>{{verReceta.ingredientes}}</td>
                     <td>{{verReceta.instrucciones}}</td>
-                    <td>{{verReceta.imagen}}</td>
+                    <td><img v-if="verReceta.imagen" class="mr-3" :src="verReceta.imagen" :alt="verReceta.imagen"></td>
                 </tr>
             </tbody>
         </table>
@@ -63,5 +62,9 @@ export default {
     width: 100%;
     margin: 10px;
     color:blue;
+}
+div{
+    justify-content: left;
+    align-items: left;
 }
 </style>
